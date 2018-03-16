@@ -29,6 +29,6 @@
     <orderEntry type="library" name="Maven: asm:asm:1.5.3" level="project" />
     <orderEntry type="library" name="Maven: javax.persistence:persistence-api:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-commons-annotations:3.2.0.Final" level="project" />
-    <orderEntry type="library" name="Maven: junit:junit:4.8.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.8.1" level="project" />
   </component>
 </module>
