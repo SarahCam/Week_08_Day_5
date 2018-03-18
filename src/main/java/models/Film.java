@@ -13,16 +13,18 @@ public class Film {
     private String genre;
     private double budget;
     private Studio studio;
+    private Director director;
     private List<Actor> actors;
 
     public Film() {
     }
 
-    public Film(String title, String genre, double budget, Studio studio) {
+    public Film(String title, String genre, double budget, Studio studio, Director director) {
         this.title = title;
         this.genre = genre;
         this.budget = budget;
         this.studio = studio;
+        this.director = director;
         this.actors = new ArrayList<Actor>();
     }
 
@@ -72,6 +74,16 @@ public class Film {
 
     public void setStudio(Studio studio) {
         this.studio = studio;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "director_id", nullable = false)
+    public Director getDirector() {
+        return director;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
     }
 
     @ManyToMany

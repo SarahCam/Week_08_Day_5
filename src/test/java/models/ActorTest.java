@@ -14,9 +14,14 @@ public class ActorTest {
     private Studio studio1, studio2, studio3;
     private Film film1, film2, film3;
     private Actor actor1, actor2;
+    private Director director1, director2, director3;
 
     @Before
     public void setUp() throws Exception {
+        Director director1 = new Director("James", "Cameron", 10000, 3);
+        Director director2 = new Director("Christopher", "Nolan", 20000, 5);
+        Director director3 = new Director("Steven", "Spielberg", 30000, 10);
+
         studio1 = new Studio("Paramount Pictures", 5000000.00);
         DBHelper.saveOrUpdate(studio1);
         studio2 = new Studio("Walt Disney Studios", 7000000.00);
@@ -24,11 +29,11 @@ public class ActorTest {
         studio3 = new Studio("Universal Pictures", 8000000.00);
         DBHelper.saveOrUpdate(studio3);
 
-        film1 = new Film("Titanic", "Drama", 100000, studio1);
+        film1 = new Film("Titanic", "Drama", 100000, studio1, director1);
         DBHelper.saveOrUpdate(film1);
-        film2 = new Film("Interstellar", "Sci-Fi", 90000, studio1);
+        film2 = new Film("Interstellar", "Sci-Fi", 90000, studio1, director2);
         DBHelper.saveOrUpdate(film2);
-        film3 = new Film("Jurassic Park", "Action", 110000, studio3);
+        film3 = new Film("Jurassic Park", "Action", 110000, studio3, director3);
         DBHelper.saveOrUpdate(film3);
 
         actor1 = new Actor("Kate", "Winslet", 1000, 42, "Female");
