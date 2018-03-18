@@ -11,78 +11,82 @@ import static junit.framework.Assert.assertEquals;
 
 public class FilmTest {
 
-    private Studio studio1, studio2, studio3;
-    private Film film1, film2, film3;
-    private Director director1, director2, director3;
+    private Studio studio1, studio2;
+    private Film film1;
+    private Director director1, director2;
+    private Actor actor1;
 
     @Before
     public void setUp() throws Exception {
         director1 = new Director("James", "Cameron", 10000, 3);
         director2 = new Director("Christopher", "Nolan", 20000, 5);
-        director3 = new Director("Steven", "Spielberg", 30000, 10);
 
         studio1 = new Studio("Paramount Pictures", 5000000.00);
-        DBHelper.saveOrUpdate(studio1);
         studio2 = new Studio("Walt Disney Studios", 7000000.00);
-        DBHelper.saveOrUpdate(studio2);
-        studio3 = new Studio("Universal Pictures", 8000000.00);
-        DBHelper.saveOrUpdate(studio3);
 
         film1 = new Film("Titanic", "Drama", 100000, studio1, director1);
-        DBHelper.saveOrUpdate(film1);
-        film2 = new Film("Interstellar", "Sci-Fi", 90000, studio1, director2);
-        DBHelper.saveOrUpdate(film2);
-        film3 = new Film("Jurassic Park", "Action", 110000, studio3, director3);
-        DBHelper.saveOrUpdate(film3);
-    }
 
-    @After
-    public void tearDown() throws Exception {
-        DBHelper.delete(film1);
-        DBHelper.delete(film2);
-        DBHelper.delete(film3);
-
-        DBHelper.delete(studio1);
-        DBHelper.delete(studio2);
-        DBHelper.delete(studio3);
-
-        DBHelper.delete(director1);
-        DBHelper.delete(director2);
-        DBHelper.delete(director3);
+        actor1 = new Actor("Kate", "Winslet", 1000, 42, "Female");
     }
 
     @Test
     public void canGetTitle() {
-        Film found = DBHelper.find(Film.class, film1.getId());
-        assertEquals("Titanic", found.getTitle());
+        assertEquals("Titanic", film1.getTitle());
+    }
+
+    @Test
+    public void canGetGenre() {
+        assertEquals("Drama", film1.getGenre());
     }
 
     @Test
     public void canGetBudget() {
-        Film found = DBHelper.find(Film.class, film1.getId());
-        assertEquals(100000.00, found.getBudget(), 0.01);
+        assertEquals(100000.00, film1.getBudget(), 0.01);
     }
 
     @Test
-    public void canSave() {
-        List<Film> results = DBHelper.getAll(Film.class);
-        assertEquals(3, results.size());
+    public void canGetStudio() {
+        assertEquals(studio1, film1.getStudio());
     }
 
     @Test
-    public void canUpdate(){
-        Film found = DBHelper.find(Film.class, film1.getId());
-        found.setBudget(5000.00);
-        DBHelper.saveOrUpdate(found);
-        found = DBHelper.find(Film.class, film1.getId());
-        assertEquals(5000.00, found.getBudget(), 0.01);
+    public void canGetDirector() {
+        assertEquals(director1, film1.getDirector());
     }
 
     @Test
-    public void canDelete() {
-        Film found = DBHelper.find(Film.class, film3.getId());
-        DBHelper.delete(found);
-        List<Film> results = DBHelper.getAll(Film.class);
-        assertEquals(2, results.size());
+    public void canUpdateTitle() {
+        film1.setTitle("HMS Victory");
+        assertEquals("HMS Victory", film1.getTitle());
+    }
+
+    @Test
+    public void canUpdateGenre() {
+        film1.setGenre("Disaster");
+        assertEquals("Disaster", film1.getGenre());
+    }
+
+    @Test
+    public void canUpdateBudget(){
+        film1.setBudget(5000.00);
+        assertEquals(5000.00, film1.getBudget(), 0.01);
+    }
+
+    @Test
+    public void canUpdateStudio(){
+        film1.setStudio(studio2);
+        assertEquals(studio2, film1.getStudio());
+    }
+
+    @Test
+    public void canUpdateDirector(){
+        film1.setDirector(director2);
+        assertEquals(director2, film1.getDirector());
+    }
+
+    @Test
+    public void canAddActor() {
+        film1.addActor(actor1);
+        assertEquals(1, film1.getActors().size());
     }
 }
