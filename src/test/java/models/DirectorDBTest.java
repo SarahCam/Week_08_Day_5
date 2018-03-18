@@ -73,6 +73,9 @@ public class DirectorDBTest {
         assertEquals(5000, found.getFee());
     }
 
+// This test does not work as expected because the Director is a property of each Film,
+// So we cannot delete a Director who is associated with a Film that exists in the DB.
+
 //    @Test
 //    public void canDelete___Director___FROM_DATABASE() {
 //        Director found = DBHelper.find(Director.class, director1.getId());

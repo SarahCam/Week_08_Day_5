@@ -59,6 +59,9 @@ public class StudioDBTest {
         assertEquals(6000000.00, found.getBudget(), 0.01);
     }
 
+// This test does not work as expected because the Studio is a property of each Film,
+// So we cannot delete a Studio that is associated with a Film that exists in the DB.
+
 //    @Test
 //    public void canDelete() {
 //        Studio found = DBHelper.find(Studio.class, studio1.getId());
