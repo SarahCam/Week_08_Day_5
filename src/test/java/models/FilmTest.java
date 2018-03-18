@@ -33,13 +33,13 @@ public class FilmTest {
 
     @After
     public void tearDown() throws Exception {
-        DBHelper.delete(studio1);
-        DBHelper.delete(studio2);
-        DBHelper.delete(studio3);
-
         DBHelper.delete(film1);
         DBHelper.delete(film2);
         DBHelper.delete(film3);
+
+        DBHelper.delete(studio1);
+        DBHelper.delete(studio2);
+        DBHelper.delete(studio3);
     }
 
     @Test
