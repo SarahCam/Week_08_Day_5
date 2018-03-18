@@ -1,4 +1,5 @@
 import db.DBHelper;
+import models.Actor;
 import models.Film;
 import models.Studio;
 import sun.security.pkcs11.Secmod;
@@ -25,7 +26,8 @@ public class Runner {
         Film film3 = new Film("Jurassic Park", "Action", 110000, studio3);
         DBHelper.saveOrUpdate(film3);
 
-
+        Actor actor1 = new Actor("Kate", "Winslet", 1000, 42, "Female");
+        DBHelper.saveOrUpdate(actor1);
 
     }
 }
