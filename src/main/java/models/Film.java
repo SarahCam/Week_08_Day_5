@@ -1,6 +1,8 @@
 package models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="films")
@@ -11,6 +13,7 @@ public class Film {
     private String genre;
     private double budget;
     private Studio studio;
+    private List<Actor> actors;
 
     public Film() {
     }
@@ -20,6 +23,7 @@ public class Film {
         this.genre = genre;
         this.budget = budget;
         this.studio = studio;
+        this.actors = new ArrayList<Actor>();
     }
 
     @Id
@@ -68,5 +72,18 @@ public class Film {
 
     public void setStudio(Studio studio) {
         this.studio = studio;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "actor_film",
+            joinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)}
+    )
+    public List<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(List<Actor> actors) {
+        this.actors = actors;
     }
 }

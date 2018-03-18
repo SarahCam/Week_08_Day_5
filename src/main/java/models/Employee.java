@@ -16,7 +16,6 @@ public abstract class Employee {
     private String firstName;
     private String lastName;
     private int fee;
-//    private List<Film> films;
 
     public Employee() {
     }
@@ -65,12 +64,4 @@ public abstract class Employee {
         this.fee = fee;
     }
 
-
-//    public List<Film> getFilms() {
-//        return films;
-//    }
-//
-//    public void setFilms(List<Film> films) {
-//        this.films = films;
-//    }
 }
