@@ -1,6 +1,7 @@
 package db;
 
 import models.Actor;
+import models.Director;
 import models.Film;
 import models.Studio;
 import org.hibernate.Criteria;
@@ -104,6 +105,13 @@ public class DBHelper {
     public static void addFilmToStudio(Film film, Studio studio) {
         studio.addFilm(film);
         saveOrUpdate(studio);
+    }
+
+    public static void addDirectorToFilm(Director director, Film film) {
+        film.setDirector(director);
+        director.addFilm(film);
+        saveOrUpdate(film);
+        saveOrUpdate(director);
     }
 }
 
