@@ -11,10 +11,10 @@ import static junit.framework.Assert.assertEquals;
 
 public class ActorTest {
 
-    private Studio studio1, studio2, studio3;
-    private Film film1, film2, film3;
-    private Actor actor1, actor2;
-    private Director director1, director2, director3;
+    private Studio studio1;
+    private Film film1;
+    private Actor actor1;
+    private Director director1;
 
     @Before
     public void setUp() throws Exception {

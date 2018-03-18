@@ -11,54 +11,43 @@ import static junit.framework.Assert.assertEquals;
 
 public class StudioTest {
 
-    private Studio studio1, studio2;
+    private Studio studio1;
+    private Film film1;
+    private Director director1;
 
     @Before
     public void setUp() throws Exception {
+        director1 = new Director("James", "Cameron", 10000, 3);
+        film1 = new Film("Titanic", "Drama", 100000, studio1, director1);
         studio1 = new Studio("Paramount Pictures", 5000000.00);
-        DBHelper.saveOrUpdate(studio1);
-        studio2 = new Studio("Walt Disney Studios", 7000000.00);
-        DBHelper.saveOrUpdate(studio2);
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        DBHelper.delete(studio1);
-        DBHelper.delete(studio2);
     }
 
     @Test
     public void canGetName() {
-        Studio found = DBHelper.find(Studio.class, studio1.getId());
-        assertEquals("Paramount Pictures", found.getName());
+        assertEquals("Paramount Pictures", studio1.getName());
     }
 
     @Test
     public void canGetBudget() {
-        Studio found = DBHelper.find(Studio.class, studio1.getId());
-        assertEquals(5000000.00, found.getBudget(), 0.01);
+        assertEquals(5000000.00, studio1.getBudget(), 0.01);
     }
 
     @Test
-    public void canSave() {
-        List<Studio> results = DBHelper.getAll(Studio.class);
-        assertEquals(2, results.size());
+    public void canUpdateName() {
+        studio1.setName("Universal Studios");
+        assertEquals("Universal Studios", studio1.getName());
     }
 
     @Test
-    public void canUpdate(){
-        Studio found = DBHelper.find(Studio.class, studio1.getId());
-        found.setBudget(6000000.00);
-        DBHelper.saveOrUpdate(found);
-        found = DBHelper.find(Studio.class, studio1.getId());
-        assertEquals(6000000.00, found.getBudget(), 0.01);
+    public void canUpdateBudget(){
+        studio1.setBudget(6000000.00);
+        assertEquals(6000000.00, studio1.getBudget(), 0.01);
     }
 
     @Test
-    public void canDelete() {
-        Studio found = DBHelper.find(Studio.class, studio1.getId());
-        DBHelper.delete(found);
-        List<Studio> results = DBHelper.getAll(Studio.class);
-        assertEquals(1, results.size());
+    public void canAddFilm() {
+        studio1.addFilm(film1);
+        assertEquals(1, studio1.getFilms().size());
     }
+
 }

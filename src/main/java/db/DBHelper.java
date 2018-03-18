@@ -2,6 +2,7 @@ package db;
 
 import models.Actor;
 import models.Film;
+import models.Studio;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -100,5 +101,9 @@ public class DBHelper {
         saveOrUpdate(actor);
     }
 
+    public static void addFilmToStudio(Film film, Studio studio) {
+        studio.addFilm(film);
+        saveOrUpdate(studio);
+    }
 }
 
