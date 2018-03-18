@@ -28,6 +28,7 @@ public class Runner {
 
         Actor actor1 = new Actor("Kate", "Winslet", 1000, 42, "Female");
         DBHelper.saveOrUpdate(actor1);
+        DBHelper.addActorToFilm(actor1, film1);
 
     }
 }

@@ -48,4 +48,8 @@ public class Actor extends Employee {
     public void setFilms(List<Film> films) {
         this.films = films;
     }
+
+    public void addFilm(Film film) {
+        this.films.add(film);
+    }
 }

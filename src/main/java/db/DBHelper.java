@@ -1,5 +1,7 @@
 package db;
 
+import models.Actor;
+import models.Film;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -89,6 +91,13 @@ public class DBHelper {
         Criteria criteria = session.createCriteria(classType);
         results = getList(criteria);
         return results;
+    }
+
+    public static void addActorToFilm(Actor actor, Film film){
+        film.addActor(actor);
+        actor.addFilm(film);
+        saveOrUpdate(film);
+        saveOrUpdate(actor);
     }
 
 }
