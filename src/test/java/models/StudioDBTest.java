@@ -67,10 +67,4 @@ public class StudioDBTest {
 //        assertEquals(0, results.size());
 //    }
 
-//    @Test
-//    public void canAddFilmToStudio___IN_DATABASE() {
-//        DBHelper.addFilmToStudio(film1, studio1);
-//        Studio foundStudio = DBHelper.find(Studio.class, studio1.getId());
-//        assertEquals(1, foundStudio.getFilms().size());
-//    }
 }

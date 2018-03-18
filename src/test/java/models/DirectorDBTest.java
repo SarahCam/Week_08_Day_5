@@ -81,12 +81,4 @@ public class DirectorDBTest {
 //        assertEquals(0, results.size());
 //    }
 
-//    @Test
-//    public void canAddDirectorToFilm___IN_DATABASE() {
-//        DBHelper.addDirectorToFilm(director1, film1);
-//        Director foundDirector = DBHelper.find(Director.class, director1.getId());
-//        Film foundFilm = DBHelper.find(Film.class, film1.getId());
-//        assertEquals(1, foundDirector.getFilms().size());
-//        assertEquals(1, foundFilm.getActors().size());
-//    }
 }
