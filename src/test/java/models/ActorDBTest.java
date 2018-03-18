@@ -59,6 +59,20 @@ public class ActorDBTest {
     }
 
     @Test
+    public void canGetWages___FROM_DATABASE() {
+        Actor found = DBHelper.find(Actor.class, actor1.getId());
+        assertEquals(0.00, found.getWages(), 0.01);
+        found.setWages(200.00);
+        DBHelper.saveOrUpdate(found);
+        found = DBHelper.find(Actor.class, actor1.getId());
+        assertEquals(200.00, found.getWages(), 0.01);
+        found.setWages(100.00);
+        DBHelper.saveOrUpdate(found);
+        found = DBHelper.find(Actor.class, actor1.getId());
+        assertEquals(300.00, found.getWages(), 0.01);
+    }
+
+    @Test
     public void canSave___Actor___TO_DATABASE() {
         List<Actor> results = DBHelper.getAll(Actor.class);
         assertEquals(2, results.size());

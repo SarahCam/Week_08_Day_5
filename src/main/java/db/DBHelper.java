@@ -1,9 +1,7 @@
 package db;
 
 import models.Actor;
-import models.Director;
 import models.Film;
-import models.Studio;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

@@ -16,6 +16,7 @@ public abstract class Employee {
     private String firstName;
     private String lastName;
     private int fee;
+    private double wages;
 
     public Employee() {
     }
@@ -24,6 +25,7 @@ public abstract class Employee {
         this.firstName = firstName;
         this.lastName = lastName;
         this.fee = fee;
+        this.wages = 0.00;
     }
 
     @Id
@@ -64,4 +66,12 @@ public abstract class Employee {
         this.fee = fee;
     }
 
+    @Column(name="wages")
+    public double getWages() {
+        return wages;
+    }
+
+    public void setWages(double wages) {
+        this.wages += wages;
+    }
 }

@@ -50,6 +50,11 @@ public class ActorTest {
     }
 
     @Test
+    public void canGetWages() {
+        assertEquals(0.00, actor1.getWages(), 0.01);
+    }
+
+    @Test
     public void canUpdateFirstName(){
         actor1.setFirstName("Katherine");
         assertEquals("Katherine", actor1.getFirstName());
@@ -77,6 +82,14 @@ public class ActorTest {
     public void canUpdateGender(){
         actor1.setGender("Male");
         assertEquals("Male", actor1.getGender());
+    }
+
+    @Test
+    public void canUpdateWages(){
+        actor1.setWages(100.00);
+        assertEquals(100.00, actor1.getWages());
+        actor1.setWages(100.00);
+        assertEquals(200.00, actor1.getWages());
     }
 
     @Test
