@@ -86,7 +86,7 @@ public class Film {
         this.director = director;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})    // Added to ensure delete cascade works
     @JoinTable(name = "actor_film",
             joinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)}
