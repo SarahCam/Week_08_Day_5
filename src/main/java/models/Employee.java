@@ -72,6 +72,10 @@ public abstract class Employee {
     }
 
     public void setWages(double wages) {
+        this.wages = wages;
+    }
+
+    public void increaseWages(double wages) {
         this.wages += wages;
     }
 }

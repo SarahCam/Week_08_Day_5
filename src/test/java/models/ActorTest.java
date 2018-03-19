@@ -85,10 +85,10 @@ public class ActorTest {
     }
 
     @Test
-    public void canUpdateWages(){
-        actor1.setWages(100.00);
+    public void canIncreaseWages(){
+        actor1.increaseWages(100.00);
         assertEquals(100.00, actor1.getWages());
-        actor1.setWages(100.00);
+        actor1.increaseWages(100.00);
         assertEquals(200.00, actor1.getWages());
     }
 

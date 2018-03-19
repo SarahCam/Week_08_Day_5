@@ -1,7 +1,9 @@
 package db;
 
 import models.Actor;
+import models.Employee;
 import models.Film;
+import models.Studio;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -98,6 +100,13 @@ public class DBHelper {
         actor.addFilm(film);
         saveOrUpdate(film);
         saveOrUpdate(actor);
+    }
+
+    public static void payEmployee(Studio studio, Employee employee, double amount){
+        studio.decreaseBudget(amount);
+        employee.increaseWages(amount);
+        saveOrUpdate(studio);
+        saveOrUpdate(employee);
     }
 }
 

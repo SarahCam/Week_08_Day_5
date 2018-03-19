@@ -1,5 +1,7 @@
 package models;
 
+import db.DBHelper;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,5 +64,9 @@ public class Studio {
 
     public void addFilm(Film film) {
         this.films.add(film);
+    }
+
+    public void decreaseBudget(double amount){
+        this.budget -= amount;
     }
 }

@@ -4,6 +4,7 @@ import db.DBHelper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import sun.security.pkcs11.Secmod;
 
 import java.util.List;
 
@@ -14,12 +15,14 @@ public class StudioTest {
     private Studio studio1;
     private Film film1;
     private Director director1;
+    private Actor actor1;
 
     @Before
     public void setUp() throws Exception {
         director1 = new Director("James", "Cameron", 10000, 3);
         film1 = new Film("Titanic", "Drama", 100000, studio1, director1);
         studio1 = new Studio("Paramount Pictures", 5000000.00);
+        actor1 = new Actor("Kate", "Winslet", 1000, 42, "Female");
     }
 
     @Test
@@ -50,4 +53,9 @@ public class StudioTest {
         assertEquals(1, studio1.getFilms().size());
     }
 
+    @Test
+    public void canDecreaseBudget() {
+        studio1.decreaseBudget(500);
+        assertEquals(4999500.00, studio1.getBudget(), 0.01);
+    }
 }
