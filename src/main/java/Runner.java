@@ -30,6 +30,8 @@ public class Runner {
         Film film1 = new Film("Titanic", "Drama", 100000, studio1, director1);
         DBHelper.saveOrUpdate(film1);
 
+        Studio updatedStudio1 = DBHelper.find(Studio.class, studio1.getId());
+
         Film film2 = new Film("Interstellar", "Sci-Fi", 90000, studio1, director2);
         DBHelper.saveOrUpdate(film2);
 
